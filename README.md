@@ -90,42 +90,34 @@
 classDiagram
     class Carro {
         - ligado: boolean
-        - velocidade: float
+        - velocidade: int
+        - machaAtual: Macha
+        - direcao: String
+        + Carro()
+        + ligar(): void
+        + desligar(): void
+        + acelerar(): void
+        + diminuirVelocidade(): void
+        + virarEsquerda(): void
+        + virarDireita(): void
+        + verificarVelocidade(): void
+        + trocarMacha(int novaMacha): void
+        + getVelocidade(): int
+        + setVelocidade(int velocidade): void
+        + main(String[] args): void
+    }
+
+    class Macha {
         - machaAtual: int
-        - direcao: string
-        + ligar()
-        + desligar()
-        + acelerar()
-        + frear()
-        + trocarMarcha()
-        + virar()
+        + Macha()
+        + getMachaAtual(): int
+        + trocarMacha(Carro carro, int novaMacha): void
+        + acelerar(Carro carro): void
+        + diminuirVelocidade(Carro carro): void
     }
 
-    class Marcha {
-        - machaAtual: int
-        + engatarMarcha()
-        + reduzirMarcha()
-    }
-
-    class Validacoes {
-        + verificaVelocidade()
-        + verificaMarcha()
-    }
-
-    class InteracaoUsuario {
-        + solicitarAcao()
-        + exibirStatus()
-    }
-
-    class Main {
-        + main()
-    }
-
-    Carro "1" *-- "1" Marcha : Contém
-    Main ..> Carro : Usa
-    Main ..> InteracaoUsuario : Usa
-    Carro ..> Validacoes : Depende
-    InteracaoUsuario ..> Carro : Atualiza
+    Carro "1" *-- "1" Macha : Contém
+    Macha ..> Carro : Dependência (operações)
 ````
 * 🔄 Fluxograma Básico
 
