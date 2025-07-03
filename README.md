@@ -86,7 +86,7 @@
 * O carro só pode ser desligado em marcha neutra e velocidade zero
  
 * 📊 Diagrama de Classes
-
+````mermaid
 classDiagram
     class Carro {
         - ligado: boolean
@@ -126,7 +126,7 @@ classDiagram
     Main ..> InteracaoUsuario : Usa
     Carro ..> Validacoes : Depende
     InteracaoUsuario ..> Carro : Atualiza
-
+````
 * 🔄 Fluxograma Básico
 
 * [Início]
