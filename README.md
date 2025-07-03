@@ -87,32 +87,48 @@
  
 * 📊 Diagrama de Classes
 
-+----------------+       +----------------+
-|     carro      |       |     macha      |
-+----------------+       +----------------+
-| - ligado: bool |<>---->| - machaAtual:  |
-| - velocidade   |       |   int          |
-| - machaAtual   |       +----------------+
-| - direcao      |               △
-+----------------+               |
-△                         |
-|                         |
-|                         |
-+----------------+       +----------------+
-|     Main       |       |  Validações    |
-+----------------+       +----------------+
-| + main()       |       | + verificaVel- |
-|                |       |   ocidade()    |
-+----------------+       | + verificaMarcha()
-|
-|
-+----------------+
-|  Interação     |
-|  com Usuário   |
-+----------------+
+classDiagram
+    class Carro {
+        - ligado: boolean
+        - velocidade: float
+        - machaAtual: int
+        - direcao: string
+        + ligar()
+        + desligar()
+        + acelerar()
+        + frear()
+        + trocarMarcha()
+        + virar()
+    }
+
+    class Marcha {
+        - machaAtual: int
+        + engatarMarcha()
+        + reduzirMarcha()
+    }
+
+    class Validacoes {
+        + verificaVelocidade()
+        + verificaMarcha()
+    }
+
+    class InteracaoUsuario {
+        + solicitarAcao()
+        + exibirStatus()
+    }
+
+    class Main {
+        + main()
+    }
+
+    Carro "1" *-- "1" Marcha : Contém
+    Main ..> Carro : Usa
+    Main ..> InteracaoUsuario : Usa
+    Carro ..> Validacoes : Depende
+    InteracaoUsuario ..> Carro : Atualiza
 
 * 🔄 Fluxograma Básico
-* text
+
 * [Início]
 * ↓
 * [Carro criado: desligado, neutro, 0km/h]
